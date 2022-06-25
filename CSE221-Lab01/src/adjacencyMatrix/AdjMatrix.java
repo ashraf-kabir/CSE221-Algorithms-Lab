@@ -1,15 +1,16 @@
 package adjacencyMatrix;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class AdjMatrix {
 	
 	public static void main(String[] args) throws IOException {
         
-		Scanner sc = new Scanner(new File(
-                "F:\\workspace eclipse\\workspace eclipse neon 2\\CSE221 Lab01 Adj Matix & Adj List\\src\\adjacencyMatrix\\graph.txt"));
+		InputStream input = AdjMatrix.class.getResourceAsStream("graph.txt");
+		
+		Scanner sc = new Scanner(input);
 
         int vertex = sc.nextInt();
 

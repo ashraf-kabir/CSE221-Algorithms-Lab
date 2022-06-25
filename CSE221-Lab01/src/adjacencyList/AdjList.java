@@ -1,7 +1,7 @@
 package adjacencyList;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedList;
 import java.util.Scanner;
 
@@ -9,10 +9,11 @@ public class AdjList {
 	
 	public static void main(String[] args) throws IOException {
 
+		InputStream input = AdjList.class.getResourceAsStream("input.txt");
+
         LinkedList arr[];
         int x;
-        Scanner sc = new Scanner(new File(
-                "F:\\workspace eclipse\\workspace eclipse neon 2\\CSE221 Lab01 Adj Matix & Adj List\\src\\adjacencyList\\input.txt"));
+        Scanner sc = new Scanner(input);
         String line = sc.next();
         int s1 = Integer.parseInt(line);
         arr = new LinkedList[s1];

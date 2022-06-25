@@ -1,42 +1,38 @@
 package heapSort;
 
-import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
+import java.io.InputStream;
 import java.util.Scanner;
 
 public class HeapSort {
-	
-public static void main(String[] args) throws IOException {
-        
-        int n, i;
-        
-        Scanner sc=new Scanner(new File(
-        		"F:\\workspace eclipse\\workspace eclipse neon 2\\CSE221 Lab02 Heapsort\\src\\heapSort\\input.txt"));
-        
-        int c=1;
-        
-        int array[] =new int[10];
-        
-        while (sc.hasNext()){
-            int num=sc.nextInt();
-            if (c==-1){
-                c++;
-                array=new int [num];
+	public static void main(String[] args) throws IOException {
+		int n, i;
+		InputStream input = HeapSort.class.getResourceAsStream("input.txt");
+		Scanner sc = new Scanner(input);	
+		try {
+			int c=1;
+			int array[] =new int[10];
+			
+			while (sc.hasNext()) {
+				int num=sc.nextInt();
+				if (c==-1){
+					c++;
+					array=new int [num];
+				} else {
+					array[c]=num;
+					c++;
+				}
+			}
+			n=array.length-1;
+			sort(array);
+			for (i = 1; i <= n; i++) {
+				System.out.print(array[i]+ " ");
             }
-            else {
-                array[c]=num;
-                c++;
-            }
-        }
-        n=array.length-1;
-        
-        sort(array);
-        
-        for (i = 1; i <= n; i++) {
-            System.out.print(array[i]+ " ");
-        }
-        
+        } catch(Exception e) {
+			System.out.println(e);
+		} finally {
+			sc.close();
+		}
     }
     
     private static int N;
@@ -46,18 +42,18 @@ public static void main(String[] args) throws IOException {
         for (int i = N; i > 0; i--) {
             swap(array,0, i);
             N = N-1;
-            maxheap(array, 0);
+            maxHeap(array, 0);
         }
     }
     
     public static void buildHeap(int array[]) {
         N = array.length-1;
         for (int j = N/2; j >= 0; j--) {
-            maxheap(array, j);
+        	maxHeap(array, j);
         }
     }     
     
-    public static void maxheap(int array[], int i) {
+    public static void maxHeap(int array[], int i) {
         int left = 2*i;
         int right = 2*i + 1;
         int max = i;
@@ -69,7 +65,7 @@ public static void main(String[] args) throws IOException {
         }
         if (max != i) {
             swap(array, i, max);
-            maxheap(array, max);
+            maxHeap(array, max);
         }
     }
     
