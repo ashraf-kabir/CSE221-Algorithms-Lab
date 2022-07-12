@@ -3,14 +3,17 @@ package mst;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 
 public class MST {
 	
 	public static void main(String[] args) throws IOException {
-
+		
         BufferedReader read = new BufferedReader(new FileReader(
-                "F:\\workspace eclipse\\workspace eclipse neon 2\\CSE221 Lab05 MST (Prim's algorithm)\\src\\mst\\primGraph.txt"));
+                "/home/ashraf/workspaces/CSE221-Algorithms-Lab/CSE221-Lab05/src/mst/primGraph.txt"));
         String str = read.readLine();
+        
         if (str != null) {
             String[] array = str.split(" ");
             int ver = array.length;
@@ -18,6 +21,7 @@ public class MST {
             int u = 0, v = 0, total = 0;
             int[] visited = new int[ver];
             int[][] matrix = new int[ver][ver];
+            
             while ((str = read.readLine()) != null) {
                 String[] s = str.split(" ");
                 int row = Integer.parseInt(s[0]);
@@ -25,6 +29,7 @@ public class MST {
                 int weight = Integer.parseInt(s[2]);
                 matrix[row][column] = weight;
             }
+            
             for (int i = 0; i < matrix.length; i++) {
                 for (int j = 0; j < matrix.length; j++) {
                     if (matrix[i][j] == 0) {
@@ -32,6 +37,7 @@ public class MST {
                     }
                 }
             }
+            
             visited[0] = 1;
             for (int counter = 1; counter < ver; counter++) {
                 min = Integer.MAX_VALUE;

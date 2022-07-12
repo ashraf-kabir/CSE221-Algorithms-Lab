@@ -8,24 +8,23 @@ public class HeapSort {
 	public static void main(String[] args) throws IOException {
 		int n, i;
 		InputStream input = HeapSort.class.getResourceAsStream("input.txt");
-		Scanner sc = new Scanner(input);	
+		Scanner sc = new Scanner(input);
 		try {
-			int c=1;
-			int array[] =new int[10];
+			int c = 1;
+			int array[] = new int[10];
 			
 			while (sc.hasNext()) {
-				int num=sc.nextInt();
-				if (c==-1){
+				int num = sc.nextInt();
+				if (c == -1) {
 					c++;
-					array=new int [num];
+					array = new int [num];
 				} else {
-					array[c]=num;
+					array[c] = num;
 					c++;
 				}
 			}
-			n=array.length-1;
 			sort(array);
-			for (i = 1; i <= n; i++) {
+			for (i = 1; i <= array.length-1; i++) {
 				System.out.print(array[i]+ " ");
             }
         } catch(Exception e) {
@@ -48,8 +47,8 @@ public class HeapSort {
     
     public static void buildHeap(int array[]) {
         N = array.length-1;
-        for (int j = N/2; j >= 0; j--) {
-        	maxHeap(array, j);
+        for (int i = N/2; i >= 0; i--) {
+        	maxHeap(array, i);
         }
     }     
     
